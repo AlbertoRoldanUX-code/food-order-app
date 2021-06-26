@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
+import Header from './components/Header/Header';
+import './index.css';
 
 function App() {
   return (
     <div>
-      <h1>Hi</h1>
+      <Header />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
 
-
-
-// 1º Import css files from github.
+//////////// 1º Import css files from github.
 // 2º Create Header component.
-// 3º Create Cart component inside of header. 
+// 3º Create Cart component inside of header component.
 // 4º Create main description component.
 // 5º Create available meals with the dummy meals.
 // 6º Implement adding meals to the cart by clicking the Add button.
