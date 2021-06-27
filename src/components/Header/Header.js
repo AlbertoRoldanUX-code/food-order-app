@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styles from './Header.module.css';
-import HeaderCartButton from './HeaderCartButton';
-import meals from './meals.jpg';
+import HeaderCartButton from './HeaderCartButton/HeaderCartButton';
+import meals from '../../assets/meals.jpg';
 
-function Header() {
+function Header(props) {
   return (
-    <div>
-      <div className={styles.header}>
+    <Fragment>
+      <header className={styles.header}>
         <h1 style={{ marginLeft: '10%' }}>ReactMeals</h1>
-        <HeaderCartButton />
-      </div>
-      <div className={styles.mainImage}>
+        <HeaderCartButton totalAmounts={props.totalAmounts} />
+      </header>
+      <div className={styles['main-image']}>
         <img src={meals} alt='meals' />
       </div>
-    </div>
+    </Fragment>
   );
 }
 
