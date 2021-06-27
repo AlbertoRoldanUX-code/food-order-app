@@ -18,7 +18,7 @@ export default App;
 //////////// 2º Create Header component.
 //////////// 3º Create HeaderCartButton component inside of header component.
 //////////// 4º Create main description component.
-// Poner el background color oscuro.
+//////////// Add background-color to body element.
 // 5º Create available meals with the dummy meals.
 // 6º Implement adding meals to the cart by clicking the Add button.
 // 7º Implement changing the amount of meals on AvailableMeals component.
