@@ -7,7 +7,13 @@ function HeaderCartButton(props) {
     <button className={styles.button}>
       <CartIcon style={styles.icon} />
       <p>Your Cart</p>
-      <a className={styles.badge}>0</a>
+      <a
+        style={{ color: 'white', textDecoration: 'none' }}
+        href='/#'
+        className={styles.badge}
+      >
+        0
+      </a>
     </button>
   );
 }

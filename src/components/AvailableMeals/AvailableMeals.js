@@ -1,12 +1,24 @@
-import React from 'react'
-
+import React from 'react';
+import Card from '../Card/Card';
+import styles from './AvailableMeals.module.css';
+import DUMMY_MEALS from './dummyMeals';
+import MealItem from '../MealsSummary/MealItem/MealItem';
 
 function AvailableMeals() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <Card style={styles.meals}>
+      <ul>
+        {DUMMY_MEALS.map((meal) => (
+          <MealItem
+            name={meal.name}
+            description={meal.description}
+            price={meal.price}
+            key={meal.id}
+          />
+        ))}
+      </ul>
+    </Card>
+  );
 }
 
-export default AvailableMeals
+export default AvailableMeals;
