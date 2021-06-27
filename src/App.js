@@ -1,16 +1,13 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import './index.css';
-import styles from './components/Header/Header.module.css';
-import meals from './meals.jpg';
+import MealsSummary from './components/MealsSummary/MealsSummary';
 
 function App() {
   return (
     <div>
       <Header />
-      <div className={styles.mainImage}>
-        <img src={meals} alt='meals' />
-      </div>
+      <MealsSummary />
     </div>
   );
 }
@@ -20,7 +17,8 @@ export default App;
 //////////// 1º Import css files from github.
 //////////// 2º Create Header component.
 //////////// 3º Create HeaderCartButton component inside of header component.
-// 4º Create main description component.
+//////////// 4º Create main description component.
+// Poner el background color oscuro.
 // 5º Create available meals with the dummy meals.
 // 6º Implement adding meals to the cart by clicking the Add button.
 // 7º Implement changing the amount of meals on AvailableMeals component.
