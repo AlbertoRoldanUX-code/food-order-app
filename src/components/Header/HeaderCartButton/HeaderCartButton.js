@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HeaderCartButton.module.css';
-import CartIcon from '../CartIcon';
+import CartIcon from './CartIcon';
 
 function HeaderCartButton(props) {
   const [bump, setBump] = useState(false);
@@ -8,17 +8,19 @@ function HeaderCartButton(props) {
   useEffect(() => {
     setBump(false);
     return () => {
-      setBump(true);
+      setTimeout(() => {
+        setBump(true);
+      }, 100);
     };
   }, [props.totalAmounts]);
 
-  console.log(bump);
-
   return (
     <button
-      className={bump ? `${styles.button} ${styles.bump}` : styles.button}
+      className={bump ? `${styles.button} ${styles.bump}` : `${styles.button}`}
     >
-      <CartIcon style={styles.icon} />
+      <span className={styles.icon}>
+        <CartIcon />
+      </span>
       <p>Your Cart</p>
       <a
         style={{ color: 'white', textDecoration: 'none' }}
