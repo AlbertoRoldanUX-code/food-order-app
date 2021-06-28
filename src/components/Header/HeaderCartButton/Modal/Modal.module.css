@@ -21,6 +21,49 @@
   animation: slide-down 300ms ease-out forwards;
 }
 
+.total {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  margin: 0 8px;
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+}
+
+.close {
+  background-color: white;
+  color: #8a2b06;
+}
+
+.order {
+  background-color: #8a2b06;
+  color: white;
+}
+
+.order:hover,
+.order:active {
+  background-color: #641e03;
+  border-color: #641e03;
+}
+
+.close:hover,
+.close:active {
+  background-color: #8a2b06;
+  border-color: #8a2b06;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .modal {
     width: 40rem;

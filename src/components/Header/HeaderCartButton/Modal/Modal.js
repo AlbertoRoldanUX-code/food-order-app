@@ -17,15 +17,17 @@ function Modal(props) {
       <span className={styles.modal}>
         <Card>
           <Cart meals={props.meals} onDelete={onDeleteHandler} />
-          <div
-            style={{
-              color: 'black',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
+          <div className={styles.total}>
             <h2>Total Amount</h2>
             <h2>Total price</h2>
+          </div>
+          <div className={styles.buttons}>
+            <button className={`${styles.button} ${styles.close}`}>
+              Close
+            </button>
+            <button className={`${styles.button} ${styles.order}`}>
+              Order
+            </button>
           </div>
         </Card>
       </span>

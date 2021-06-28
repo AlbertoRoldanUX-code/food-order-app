@@ -18,7 +18,7 @@ function MealItemForm(props) {
   return (
     <form onSubmit={onSubmitHandler} className={styles.form}>
       <div className={styles2.input}>
-        <label htmlFor=''>Amount</label>
+        <label htmlFor={props.id}>Amount</label>
         <input
           value={enteredAmount}
           type='number'
@@ -26,6 +26,7 @@ function MealItemForm(props) {
           min='1'
           max='5'
           step='1'
+          id={props.id}
         />
       </div>
       <button type='submit'>+ Add</button>
