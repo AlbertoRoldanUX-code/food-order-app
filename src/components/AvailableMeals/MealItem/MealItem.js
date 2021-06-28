@@ -4,8 +4,17 @@ import MealItemForm from './MealItemForm/MealItemForm';
 
 function MealItem(props) {
   const onSendHandler = function (amount) {
+    const meal = {
+      name: props.name,
+      price: props.price,
+      id: Math.random().toString(),
+      amount: amount,
+    };
     props.onSend(amount);
+    props.onSendMeal(meal);
   };
+
+  const onClickHandler = function () {};
 
   return (
     <li className={styles.meal}>
@@ -14,7 +23,9 @@ function MealItem(props) {
         <p className={styles.description}>{props.description}</p>
         <p className={styles.price}>${props.price}</p>
       </div>
-      <MealItemForm onSend={onSendHandler} />
+      <span onClick={onClickHandler}>
+        <MealItemForm onSend={onSendHandler} />
+      </span>
     </li>
   );
 }

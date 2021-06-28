@@ -6,6 +6,7 @@ import AvailableMeals from './components/AvailableMeals/AvailableMeals';
 
 function App() {
   const [totalAmounts, setTotalAmounts] = useState('');
+  const [meals, setMeals] = useState('');
 
   const onSendHandler = function (amount) {
     setTotalAmounts((prevAmounts) => {
@@ -13,11 +14,17 @@ function App() {
     });
   };
 
+  const onSendMealHandler = function (meal) {
+    setMeals((prevMeals) => {
+      return [meal, ...prevMeals];
+    });
+  };
+
   return (
     <Fragment>
-      <Header totalAmounts={totalAmounts} />
+      <Header totalAmounts={totalAmounts} meals={meals} />
       <MealsSummary />
-      <AvailableMeals onSend={onSendHandler} />
+      <AvailableMeals onSend={onSendHandler} onSendMeal={onSendMealHandler} />
     </Fragment>
   );
 }
@@ -30,10 +37,13 @@ export default App;
 //////////// 4º Create main description component.
 //////////// 5º Add background-color to body element.
 //////////// 6º Create available meals with the dummy meals.
-// 7º Implement bump on the HeaderCartButton when clicking + Add.
-// 8º Implement adding a new meal to HeaderCartButton when clicking on + Add.
-// 9º Implement viewing the Cart as a modal.
+//////////// 7º Implement bump on the HeaderCartButton when clicking + Add.
+//////////// 8º Implement adding a new meal to HeaderCartButton when clicking on + Add.
+//////////// 9º Implement viewing the Cart as a modal.
 // 10º Implement changing the amount of meals on Cart component.
 // 11º Remove meal on Cart component if clicking on - and there's only 1 left.
-// 12º Console.log Ordering... when clicking on Order button from Cart component.
-// 13º Implement closing modal when clicking on Close button on Cart component.
+// 12º Create Close and Order buttons.
+// 13º Console.log Ordering... when clicking on Order button from Cart component.
+// 14º Implement closing modal when clicking on Close button on Cart component.
+// 15º Implement adding amounts if adding the same meal to the cart.
+// 16º Implement viewing the total amount.

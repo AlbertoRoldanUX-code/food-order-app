@@ -8,7 +8,10 @@ function Header(props) {
     <Fragment>
       <header className={styles.header}>
         <h1 style={{ marginLeft: '10%' }}>ReactMeals</h1>
-        <HeaderCartButton totalAmounts={props.totalAmounts} />
+        <HeaderCartButton
+          totalAmounts={props.totalAmounts}
+          meals={props.meals}
+        />
       </header>
       <div className={styles['main-image']}>
         <img src={meals} alt='meals' />

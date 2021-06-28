@@ -9,6 +9,10 @@ function AvailableMeals(props) {
     props.onSend(amount);
   };
 
+  const onSendMealHandler = function (meal) {
+    props.onSendMeal(meal);
+  };
+
   return (
     <Card style={styles.meals}>
       <ul>
@@ -19,6 +23,7 @@ function AvailableMeals(props) {
             price={meal.price}
             key={meal.id}
             onSend={onSendHandler}
+            onSendMeal={onSendMealHandler}
           />
         ))}
       </ul>
