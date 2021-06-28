@@ -40,10 +40,11 @@ export default App;
 //////////// 7º Implement bump on the HeaderCartButton when clicking + Add.
 //////////// 8º Implement adding a new meal to HeaderCartButton when clicking on + Add.
 //////////// 9º Implement viewing the Cart as a modal.
-// 10º Implement changing the amount of meals on Cart component.
+//////////// 10º Implement changing the amount of meals on Cart component.
 // 11º Remove meal on Cart component if clicking on - and there's only 1 left.
 // 12º Create Close and Order buttons.
 // 13º Console.log Ordering... when clicking on Order button from Cart component.
 // 14º Implement closing modal when clicking on Close button on Cart component.
 // 15º Implement adding amounts if adding the same meal to the cart.
 // 16º Implement viewing the total amount.
+// 17º Implement opening the modal only when there's meals.

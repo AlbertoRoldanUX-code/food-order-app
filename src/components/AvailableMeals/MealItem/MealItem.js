@@ -14,18 +14,14 @@ function MealItem(props) {
     props.onSendMeal(meal);
   };
 
-  const onClickHandler = function () {};
-
   return (
     <li className={styles.meal}>
       <div>
         <h3>{props.name}</h3>
-        <p className={styles.description}>{props.description}</p>
-        <p className={styles.price}>${props.price}</p>
+        <div className={styles.description}>{props.description}</div>
+        <div className={styles.price}>${props.price}</div>
       </div>
-      <span onClick={onClickHandler}>
-        <MealItemForm onSend={onSendHandler} />
-      </span>
+      <MealItemForm onSend={onSendHandler} />
     </li>
   );
 }
