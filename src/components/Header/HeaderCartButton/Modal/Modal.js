@@ -14,23 +14,11 @@ function Modal(props) {
 
   return (
     <Fragment>
-      <span className={styles.modal}>
-        <Card>
+      <Card>
+        <span className={styles.modal}>
           <Cart meals={props.meals} onDelete={onDeleteHandler} />
-          <div className={styles.total}>
-            <h2>Total Amount</h2>
-            <h2>Total price</h2>
-          </div>
-          <div className={styles.buttons}>
-            <button className={`${styles.button} ${styles.close}`}>
-              Close
-            </button>
-            <button className={`${styles.button} ${styles.order}`}>
-              Order
-            </button>
-          </div>
-        </Card>
-      </span>
+        </span>
+      </Card>
       <div className={styles.backdrop} onClick={onClickHandler}></div>
     </Fragment>
   );

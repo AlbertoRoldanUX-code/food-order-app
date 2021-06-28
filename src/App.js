@@ -55,7 +55,7 @@ export default App;
 //////////// 10º Implement changing the amount of meals on Cart component.
 //////////// 11º Remove meal on Cart component if clicking on - and there's only 1 left.
 //////////// 12º Create Close and Order buttons.
-// 13º Console.log Ordering... when clicking on Order button from Cart component.
+//////////// 13º Console.log Ordering... when clicking on Order button from Cart component.
 // 14º Implement closing modal when clicking on Close button on Cart component.
 // 15º Implement adding amounts if adding the same meal to the cart.
 // 16º Implement viewing the total amount.
