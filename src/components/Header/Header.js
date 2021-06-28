@@ -4,6 +4,10 @@ import HeaderCartButton from './HeaderCartButton/HeaderCartButton';
 import meals from '../../assets/meals.jpg';
 
 function Header(props) {
+  const onDeleteHandler = function (name) {
+    props.onDelete(name);
+  };
+
   return (
     <Fragment>
       <header className={styles.header}>
@@ -11,6 +15,7 @@ function Header(props) {
         <HeaderCartButton
           totalAmounts={props.totalAmounts}
           meals={props.meals}
+          onDelete={onDeleteHandler}
         />
       </header>
       <div className={styles['main-image']}>

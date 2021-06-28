@@ -8,11 +8,15 @@ function Modal(props) {
     props.onClickOut(false);
   };
 
+  const onDeleteHandler = function (name) {
+    props.onDelete(name);
+  };
+
   return (
     <Fragment>
       <span className={styles.modal}>
         <Card>
-          <Cart meals={props.meals} />
+          <Cart meals={props.meals} onDelete={onDeleteHandler} />
           <div
             style={{
               color: 'black',

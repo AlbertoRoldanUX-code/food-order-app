@@ -8,6 +8,10 @@ const CartItem = (props) => {
     setAmount(+amount - 1);
   };
 
+  if (+amount <= 0) {
+    props.onDelete(props.name);
+  }
+
   const onAddHandler = function () {
     setAmount(+amount + 1);
   };

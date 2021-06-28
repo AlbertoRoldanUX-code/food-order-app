@@ -24,6 +24,8 @@ function MealItemForm(props) {
           type='number'
           onChange={onChangeHandler}
           min='1'
+          max='5'
+          step='1'
         />
       </div>
       <button type='submit'>+ Add</button>

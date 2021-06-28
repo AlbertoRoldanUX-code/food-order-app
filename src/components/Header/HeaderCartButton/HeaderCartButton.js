@@ -24,6 +24,10 @@ function HeaderCartButton(props) {
     setModal(state);
   };
 
+  const onDeleteHandler = function (name) {
+    props.onDelete(name);
+  };
+
   return (
     <Fragment>
       {!modal && (
@@ -46,7 +50,13 @@ function HeaderCartButton(props) {
           </a>
         </button>
       )}
-      {modal && <Modal onClickOut={onClickOutHandler} meals={props.meals} />}
+      {modal && (
+        <Modal
+          onClickOut={onClickOutHandler}
+          meals={props.meals}
+          onDelete={onDeleteHandler}
+        />
+      )}
     </Fragment>
   );
 }
