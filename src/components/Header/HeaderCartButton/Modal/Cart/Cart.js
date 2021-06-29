@@ -7,8 +7,12 @@ function Cart(props) {
     props.onDelete(name);
   };
 
-  const onClickHandler = function () {
+  const onOrderHandler = function () {
     console.log('Ordering...');
+  };
+
+  const onCloseHandler = function () {
+    props.onClose(false);
   };
 
   return (
@@ -29,8 +33,10 @@ function Cart(props) {
         <span>35.63</span>
       </div>
       <div className={styles.actions}>
-        <button className={styles['button--alt']}>Close</button>
-        <button className={styles.button} onClick={onClickHandler}>
+        <button className={styles['button--alt']} onClick={onCloseHandler}>
+          Close
+        </button>
+        <button className={styles.button} onClick={onOrderHandler}>
           Order
         </button>
       </div>{' '}

@@ -18,7 +18,11 @@ function Modal(props) {
       {ReactDOM.createPortal(
         <Card>
           <span className={styles.modal}>
-            <Cart meals={props.meals} onDelete={onDeleteHandler} />
+            <Cart
+              meals={props.meals}
+              onDelete={onDeleteHandler}
+              onClose={onClickHandler}
+            />
           </span>
         </Card>,
         document.getElementById('overlays')
