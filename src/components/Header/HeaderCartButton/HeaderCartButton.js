@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
 import styles from './HeaderCartButton.module.css';
 import CartIcon from './CartIcon';
 import Modal from './Modal/Modal';
+import cartContext from '../../../store/cart-context';
 
 function HeaderCartButton(props) {
   const [bump, setBump] = useState(false);
@@ -28,6 +29,12 @@ function HeaderCartButton(props) {
     props.onDelete(name);
   };
 
+  const ctx = useContext(cartContext);
+
+  const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
+
   return (
     <Fragment>
       {!modal && (
@@ -46,14 +53,14 @@ function HeaderCartButton(props) {
             href='/#'
             className={styles.badge}
           >
-            {props.totalAmounts || 0}
+            {numberOfCartItems}
           </a>
         </button>
       )}
       {modal && (
         <Modal
           onHideModal={onHideModalHandler}
-          meals={props.meals}
+          meals={ctx.meals}
           onDelete={onDeleteHandler}
         />
       )}

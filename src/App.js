@@ -1,8 +1,9 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import './index.css';
 import MealsSummary from './components/MealsSummary/MealsSummary';
 import AvailableMeals from './components/AvailableMeals/AvailableMeals';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [totalAmounts, setTotalAmounts] = useState('');
@@ -15,31 +16,39 @@ function App() {
   };
 
   const onSendMealHandler = function (meal) {
-    if (meals) {
-      for (let i = 0; i < meals.length; i++) {
-        if (meals[i].name === meal.name) {
-          // meal.id = meals[i].id;
-          meal.amount = meals[i].amount + meal.amount;
-          console.log('ya está');
-          setMeals(meal);
-        }
-        if (meals[i].name !== meal.name) {
-          console.log('no está todavía');
-          setMeals((prevMeals) => {
-            return [meal, ...prevMeals];
-          });
-        } else {
-          console.log('ya está, pero no hace el loop');
+    // if (meals) {
+    //   for (let i = 0; i < meals.length; i++) {
+    //     if (meals[i].name === meal.name) {
+    //       console.log('ya está en la cesta');
+    //       setMeals((prevMeals) => {
+    //         return [{ ...meals[i], ...meal }, ...prevMeals];
+    //       });
+    //     }
+
+    //     // if (meals[i].name !== meal.name) {
+    //     //   console.log('no está todavía');
+    //     //   setMeals((prevMeals) => {
+    //     //     return [meal, ...prevMeals];
+    //     //   });
+    //     // }
+    //   }
+    // }
+    // if (!meals) {
+    //   setMeals((prevMeals) => {
+    //     return [meal, ...prevMeals];
+    //   });
+    // }
+    setMeals((prevMeals) => {
+      if (meals) {
+        for (let i = 0; i < meals.length; i++) {
+          if (meals[i].name === meal.name) {
+            console.log('already there');
+          }
         }
       }
-    }
-    if (!meals) {
-      console.log('El primer meal');
 
-      setMeals((prevMeals) => {
-        return [meal, ...prevMeals];
-      });
-    }
+      return [meal, ...prevMeals];
+    });
   };
   console.log(meals);
 
@@ -51,7 +60,7 @@ function App() {
   };
 
   return (
-    <Fragment>
+    <CartProvider>
       <Header
         totalAmounts={totalAmounts}
         meals={meals}
@@ -62,7 +71,7 @@ function App() {
         onSendAmount={onSendAmountHandler}
         onSendMeal={onSendMealHandler}
       />
-    </Fragment>
+    </CartProvider>
   );
 }
 
@@ -83,7 +92,11 @@ export default App;
 //////////// 13º Console.log Ordering... when clicking on Order button from Cart component.
 //////////// 14º Implement closing modal when clicking on Close button on Cart component.
 // 15º Implement adding amounts if adding the same meal to the cart.
-// 16º Implement viewing the total amount.
-// 17º Implement opening the modal only when there's meals.
+// 16º Implement viewing the total amount of every meal on the Button component.
+//////////// 17º Implement opening the modal only when there's meals.
 // 18º Implement updating the count when changing the amount of meals on Cart component.
-// 19º Change number on the button to the sum of the amounts of each meal.
+//////////// 19º Change number on the button to the sum of the amounts of each meal.
+// 20º Remove passing data with props.
+// 21º Remove adding the amounts to the Button component with props.
+
+// Use context to manage to manage the overall cart data
