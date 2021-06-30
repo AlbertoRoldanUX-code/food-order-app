@@ -8,17 +8,40 @@ function App() {
   const [totalAmounts, setTotalAmounts] = useState('');
   const [meals, setMeals] = useState('');
 
-  const onSendHandler = function (amount) {
+  const onSendAmountHandler = function (amount) {
     setTotalAmounts((prevAmounts) => {
       return [+amount + +prevAmounts];
     });
   };
 
   const onSendMealHandler = function (meal) {
-    setMeals((prevMeals) => {
-      return [meal, ...prevMeals];
-    });
+    if (meals) {
+      for (let i = 0; i < meals.length; i++) {
+        if (meals[i].name === meal.name) {
+          // meal.id = meals[i].id;
+          meal.amount = meals[i].amount + meal.amount;
+          console.log('ya está');
+          setMeals(meal);
+        }
+        if (meals[i].name !== meal.name) {
+          console.log('no está todavía');
+          setMeals((prevMeals) => {
+            return [meal, ...prevMeals];
+          });
+        } else {
+          console.log('ya está, pero no hace el loop');
+        }
+      }
+    }
+    if (!meals) {
+      console.log('El primer meal');
+
+      setMeals((prevMeals) => {
+        return [meal, ...prevMeals];
+      });
+    }
   };
+  console.log(meals);
 
   const onDeleteHandler = function (name) {
     setMeals((prevMeals) => {
@@ -26,7 +49,6 @@ function App() {
       return updatedMeals;
     });
   };
-  console.log(meals);
 
   return (
     <Fragment>
@@ -36,7 +58,10 @@ function App() {
         onDelete={onDeleteHandler}
       />
       <MealsSummary />
-      <AvailableMeals onSend={onSendHandler} onSendMeal={onSendMealHandler} />
+      <AvailableMeals
+        onSendAmount={onSendAmountHandler}
+        onSendMeal={onSendMealHandler}
+      />
     </Fragment>
   );
 }
@@ -61,4 +86,4 @@ export default App;
 // 16º Implement viewing the total amount.
 // 17º Implement opening the modal only when there's meals.
 // 18º Implement updating the count when changing the amount of meals on Cart component.
-// 19º Change number in the button to the sum of the amounts of each meal.
+// 19º Change number on the button to the sum of the amounts of each meal.

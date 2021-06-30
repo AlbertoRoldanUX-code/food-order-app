@@ -7,10 +7,10 @@ function MealItem(props) {
     const meal = {
       name: props.name,
       price: props.price,
-      id: Math.random().toString(),
-      amount: amount,
+      id: props.id,
+      amount: Number(amount),
     };
-    props.onSend(amount);
+    props.onSendAmount(amount);
     props.onSendMeal(meal);
   };
 
@@ -21,7 +21,7 @@ function MealItem(props) {
         <div className={styles.description}>{props.description}</div>
         <div className={styles.price}>${props.price}</div>
       </div>
-      <MealItemForm id={props.id} onSend={onSendHandler} />
+      <MealItemForm id={props.id} onSendAmount={onSendHandler} />
     </li>
   );
 }

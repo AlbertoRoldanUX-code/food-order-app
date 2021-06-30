@@ -5,14 +5,6 @@ import Cart from './Cart/Cart.js';
 import Card from '../../../Card/Card';
 
 function Modal(props) {
-  const onClickHandler = function () {
-    props.onClickOut(false);
-  };
-
-  const onDeleteHandler = function (name) {
-    props.onDelete(name);
-  };
-
   return (
     <Fragment>
       {ReactDOM.createPortal(
@@ -20,15 +12,15 @@ function Modal(props) {
           <span className={styles.modal}>
             <Cart
               meals={props.meals}
-              onDelete={onDeleteHandler}
-              onClose={onClickHandler}
+              onDelete={props.onDelete}
+              onHideModal={props.onHideModal}
             />
           </span>
         </Card>,
         document.getElementById('overlays')
       )}
       {ReactDOM.createPortal(
-        <div className={styles.backdrop} onClick={onClickHandler}></div>,
+        <div className={styles.backdrop} onClick={props.onHideModal}></div>,
         document.getElementById('overlays')
       )}
     </Fragment>

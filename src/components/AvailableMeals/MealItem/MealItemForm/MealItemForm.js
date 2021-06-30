@@ -11,14 +11,14 @@ function MealItemForm(props) {
 
   const onSubmitHandler = function (e) {
     e.preventDefault();
-    props.onSend(enteredAmount);
+    props.onSendAmount(enteredAmount);
     setEnteredAmount('1');
   };
 
   return (
     <form onSubmit={onSubmitHandler} className={styles.form}>
       <div className={styles2.input}>
-        <label htmlFor={props.id}>Amount</label>
+        <label htmlFor={props.key}>Amount</label>
         <input
           value={enteredAmount}
           type='number'

@@ -20,8 +20,8 @@ function HeaderCartButton(props) {
     setModal(true);
   };
 
-  const onClickOutHandler = function (state) {
-    setModal(state);
+  const onHideModalHandler = function () {
+    setModal(false);
   };
 
   const onDeleteHandler = function (name) {
@@ -52,7 +52,7 @@ function HeaderCartButton(props) {
       )}
       {modal && (
         <Modal
-          onClickOut={onClickOutHandler}
+          onHideModal={onHideModalHandler}
           meals={props.meals}
           onDelete={onDeleteHandler}
         />
