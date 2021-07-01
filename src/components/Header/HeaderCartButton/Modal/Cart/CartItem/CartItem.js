@@ -2,32 +2,18 @@ import { useState } from 'react';
 import styles from './CartItem.module.css';
 
 const CartItem = (props) => {
-  const [amount, setAmount] = useState(props.amount);
-
-  const onRemoveHandler = function () {
-    setAmount(+amount - 1);
-  };
-
-  if (+amount <= 0) {
-    props.onDelete(props.name);
-  }
-
-  const onAddHandler = function () {
-    setAmount(+amount + 1);
-  };
-
   return (
     <li className={styles['cart-item']}>
       <div>
-        <h2>{props.name}</h2>
+        <h2></h2>
         <div className={styles.summary}>
-          <span className={styles.price}>{props.price}</span>
-          <span className={styles.amount}>x {amount}</span>
+          <span className={styles.price}></span>
+          <span className={styles.amount}>x </span>
         </div>
       </div>
       <div className={styles.actions}>
-        <button onClick={onRemoveHandler}>−</button>
-        <button onClick={onAddHandler}>+</button>
+        <button>−</button>
+        <button>+</button>
       </div>
     </li>
   );

@@ -25,10 +25,6 @@ function HeaderCartButton(props) {
     setModal(false);
   };
 
-  const onDeleteHandler = function (name) {
-    props.onDelete(name);
-  };
-
   const ctx = useContext(cartContext);
 
   const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
@@ -57,13 +53,7 @@ function HeaderCartButton(props) {
           </a>
         </button>
       )}
-      {modal && (
-        <Modal
-          onHideModal={onHideModalHandler}
-          meals={ctx.meals}
-          onDelete={onDeleteHandler}
-        />
-      )}
+      {modal && <Modal onHideModal={onHideModalHandler} />}
     </Fragment>
   );
 }

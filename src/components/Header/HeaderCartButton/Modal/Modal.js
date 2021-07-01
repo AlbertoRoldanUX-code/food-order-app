@@ -10,11 +10,7 @@ function Modal(props) {
       {ReactDOM.createPortal(
         <Card>
           <span className={styles.modal}>
-            <Cart
-              meals={props.meals}
-              onDelete={props.onDelete}
-              onHideModal={props.onHideModal}
-            />
+            <Cart onHideModal={props.onHideModal} />
           </span>
         </Card>,
         document.getElementById('overlays')

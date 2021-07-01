@@ -5,10 +5,6 @@ import DUMMY_MEALS from './dummyMeals';
 import MealItem from './MealItem/MealItem';
 
 function AvailableMeals(props) {
-  const onSendMealHandler = function (meal) {
-    props.onSendMeal(meal);
-  };
-
   return (
     <Card style={styles.meals}>
       <ul>
@@ -18,8 +14,6 @@ function AvailableMeals(props) {
             description={meal.description}
             price={meal.price}
             key={index}
-            onSendAmount={props.onSendAmount}
-            onSendMeal={onSendMealHandler}
             id={index}
           />
         ))}

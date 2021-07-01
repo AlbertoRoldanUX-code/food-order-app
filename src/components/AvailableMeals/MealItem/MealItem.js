@@ -3,17 +3,6 @@ import styles from './MealItem.module.css';
 import MealItemForm from './MealItemForm/MealItemForm';
 
 function MealItem(props) {
-  const onSendHandler = function (amount) {
-    const meal = {
-      name: props.name,
-      price: props.price,
-      id: props.id,
-      amount: Number(amount),
-    };
-    props.onSendAmount(amount);
-    props.onSendMeal(meal);
-  };
-
   return (
     <li className={styles.meal}>
       <div>
@@ -21,7 +10,7 @@ function MealItem(props) {
         <div className={styles.description}>{props.description}</div>
         <div className={styles.price}>${props.price}</div>
       </div>
-      <MealItemForm id={props.id} onSendAmount={onSendHandler} />
+      <MealItemForm />
     </li>
   );
 }
