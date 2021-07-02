@@ -37,7 +37,7 @@ function Cart(props) {
 
       <div className={styles.total}>
         <span>Total Amount</span>
-        <span>${cartCtx.totalAmount.toFixed(2)}</span>
+        <span>${Math.abs(cartCtx.totalAmount).toFixed(2)}</span>
       </div>
       <div className={styles.actions}>
         <button className={styles['button--alt']} onClick={props.onHideModal}>
