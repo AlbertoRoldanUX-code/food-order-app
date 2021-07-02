@@ -15,7 +15,7 @@ function Cart(props) {
   };
 
   const onAddHandler = function (item) {
-    cartCtx.addItem(item);
+    cartCtx.addItem({ ...item, amount: 1 });
   };
 
   return (
