@@ -10,9 +10,13 @@ function Cart(props) {
     console.log('Ordering...');
   };
 
-  // const totalAmount = cartCtx.item.amount * cartCtx.item.price;
+  const onRemoveHandler = function (id) {
+    cartCtx.removeItem(id);
+  };
 
-  console.log(cartCtx.items.length);
+  const onAddHandler = function (item) {
+    cartCtx.addItem(item);
+  };
 
   return (
     <Fragment>
@@ -24,6 +28,8 @@ function Cart(props) {
               price={item.price}
               amount={item.amount}
               key={item.id}
+              onRemove={onRemoveHandler.bind(null, item.id)}
+              onAdd={onAddHandler.bind(null, item)}
             />
           );
         })}
@@ -31,7 +37,7 @@ function Cart(props) {
 
       <div className={styles.total}>
         <span>Total Amount</span>
-        {/* <span>${totalAmount}</span> */}
+        <span>${cartCtx.totalAmount.toFixed(2)}</span>
       </div>
       <div className={styles.actions}>
         <button className={styles['button--alt']} onClick={props.onHideModal}>
