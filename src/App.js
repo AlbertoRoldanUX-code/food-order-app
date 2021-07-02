@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header/Header';
 import './index.css';
 import MealsSummary from './components/MealsSummary/MealsSummary';
@@ -34,8 +34,8 @@ export default App;
 //////////// 15º Implement opening the modal only when there's meals.
 //////////// 16º Change number on the button to the sum of the amounts of each meal.
 //////////// 17º Remove adding the amounts to the Button component with props.
-// 18º Implement adding amounts if adding the same meal to the cart.
-// 19º Implement viewing the total amount of every meal on the Button component.
-// 20º Implement updating the count when changing the amount of meals on Cart component.
-// 21º Remove passing data with props.
+//////////// 18º Implement updating the count when changing the amount of meals on Cart component.
+//////////// 19º Remove passing data with props.
+// 20º Implement adding amounts if adding the same meal to the cart.
+// 21º Implement viewing the total amount of every meal on the Button component.
 // 22º Use context to manage to manage the overall cart data

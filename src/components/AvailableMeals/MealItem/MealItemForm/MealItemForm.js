@@ -11,7 +11,7 @@ function MealItemForm(props) {
 
   const onSubmitHandler = function (e) {
     e.preventDefault();
-    console.log(enteredAmount);
+    props.onAddToCart(+enteredAmount);
     setEnteredAmount('1');
   };
 

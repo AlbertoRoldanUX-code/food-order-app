@@ -9,7 +9,11 @@ function Cart(props) {
 
   return (
     <Fragment>
-      {props.meals && <ul className={styles['cart-items']}></ul>}
+      {props.meals && (
+        <ul className={styles['cart-items']}>
+          <CartItem />
+        </ul>
+      )}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>35.63</span>
@@ -18,7 +22,9 @@ function Cart(props) {
         <button className={styles['button--alt']} onClick={props.onHideModal}>
           Close
         </button>
-        <button className={styles.button}>Order</button>
+        <button className={styles.button} onClick={onOrderHandler}>
+          Order
+        </button>
       </div>{' '}
     </Fragment>
   );
