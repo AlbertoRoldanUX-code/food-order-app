@@ -4,7 +4,7 @@ import styles from './AvailableMeals.module.css';
 import DUMMY_MEALS from './dummyMeals';
 import MealItem from './MealItem/MealItem';
 
-function AvailableMeals(props) {
+function AvailableMeals() {
   return (
     <Card style={styles.meals}>
       <ul>
