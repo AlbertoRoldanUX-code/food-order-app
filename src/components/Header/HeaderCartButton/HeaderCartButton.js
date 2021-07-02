@@ -8,19 +8,9 @@ function HeaderCartButton(props) {
   const [bump, setBump] = useState(false);
   const [modal, setModal] = useState(false);
 
-  useEffect(() => {
-    setBump(false);
-    return () => {
-      setTimeout(() => {
-        setBump(true);
-      }, 100);
-    };
-  }, [props.totalAmounts]);
-
   const onClickHandler = function () {
     setModal(true);
   };
-
   const onHideModalHandler = function () {
     setModal(false);
   };
@@ -31,13 +21,23 @@ function HeaderCartButton(props) {
     return curNumber + item.amount;
   }, 0);
 
+  useEffect(() => {
+    if (ctx.items.length === 0) return;
+    setBump(true);
+    const timer = setTimeout(() => {
+      setBump(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [ctx.items]);
+
   return (
     <Fragment>
       {!modal && (
         <button
-          className={
-            bump ? `${styles.button} ${styles.bump}` : `${styles.button}`
-          }
+          className={`${styles.button} ${bump ? styles.bump : ''}`}
           onClick={onClickHandler}
         >
           <span className={styles.icon}>
