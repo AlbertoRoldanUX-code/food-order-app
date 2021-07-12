@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './CheckoutForm.module.css';
 
-function CheckoutForm() {
+function CheckoutForm(props) {
   const [enteredFName, setEnteredFName] = useState('');
   const [enteredLName, setEnteredLName] = useState('');
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -141,7 +141,10 @@ function CheckoutForm() {
         )}
       </div>
       <div className={styles['form-actions']}>
-        <button disabled={!formIsValid}>Submit</button>
+        <button className={styles.button2} onClick={props.onHideModal}>
+          Cancel
+        </button>
+        <button disabled={!formIsValid}>Confirm</button>
       </div>
     </form>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import styles from './AvailableMeals.module.css';
 import MealItem from './MealItem/MealItem';
@@ -7,9 +7,11 @@ import LoadingSpinner from './LoadingSpinner';
 function AvailableMeals() {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchMeals = async function () {
     try {
+      setError(null);
       const response = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
       );
@@ -19,6 +21,8 @@ function AvailableMeals() {
       setIsLoading(false);
     } catch (err) {
       console.error(err);
+      setError(err.message);
+      setIsLoading(false);
     }
   };
 
@@ -42,6 +46,7 @@ function AvailableMeals() {
           ))}
         </ul>
       )}
+      {error && <p>{error}</p>}
     </Card>
   );
 }

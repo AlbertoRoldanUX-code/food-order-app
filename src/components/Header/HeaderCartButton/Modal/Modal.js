@@ -17,10 +17,8 @@ function Modal(props) {
       {ReactDOM.createPortal(
         <Card>
           <span className={styles.modal}>
-            {!isOrdering && (
-              <Cart onHideModal={props.onHideModal} onOrder={onOrderHandler} />
-            )}
-            {isOrdering && <CheckoutForm />}
+            <Cart onHideModal={props.onHideModal} onOrder={onOrderHandler} />
+            {isOrdering && <CheckoutForm onHideModal={props.onHideModal} />}
           </span>
         </Card>,
 
