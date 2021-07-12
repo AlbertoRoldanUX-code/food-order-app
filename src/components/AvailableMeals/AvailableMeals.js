@@ -6,11 +6,10 @@ import LoadingSpinner from './LoadingSpinner';
 
 function AvailableMeals() {
   const [meals, setMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchMeals = useCallback(async function () {
+  const fetchMeals = async function () {
     try {
-      setIsLoading(true);
       const response = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
       );
@@ -21,11 +20,11 @@ function AvailableMeals() {
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  };
 
   useEffect(() => {
     fetchMeals();
-  }, [fetchMeals]);
+  }, []);
 
   return (
     <Card style={styles.meals}>

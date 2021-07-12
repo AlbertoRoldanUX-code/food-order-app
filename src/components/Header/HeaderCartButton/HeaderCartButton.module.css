@@ -58,3 +58,13 @@
     transform: scale(1);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .button {
+    padding: 0 0.7rem;
+  }
+
+  .icon {
+    padding: 0;
+  }
+}
