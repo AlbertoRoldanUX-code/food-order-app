@@ -4,12 +4,21 @@ import styles from './Modal.module.css';
 import Cart from './Cart/Cart.js';
 import Card from '../../../Card/Card';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
+import ConfirmationMessage from './ConfirmationMessage/ConfirmationMessage';
 
 function Modal(props) {
   const [isOrdering, setIsOrdering] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isReviewing, setIsReviewing] = useState(true);
 
   const onOrderHandler = function () {
     setIsOrdering(true);
+  };
+
+  const onConfirmHandler = function () {
+    setIsConfirmed(true);
+    setIsOrdering(false);
+    setIsReviewing(false);
   };
 
   return (
@@ -17,8 +26,16 @@ function Modal(props) {
       {ReactDOM.createPortal(
         <Card>
           <span className={styles.modal}>
-            <Cart onHideModal={props.onHideModal} onOrder={onOrderHandler} />
-            {isOrdering && <CheckoutForm onHideModal={props.onHideModal} />}
+            {isReviewing && (
+              <Cart onHideModal={props.onHideModal} onOrder={onOrderHandler} />
+            )}
+            {isOrdering && (
+              <CheckoutForm
+                onHideModal={props.onHideModal}
+                onConfirm={onConfirmHandler}
+              />
+            )}
+            {isConfirmed && <ConfirmationMessage />}
           </span>
         </Card>,
 
