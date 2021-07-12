@@ -36,11 +36,35 @@ function CheckoutForm() {
     setEmailIsTouched(true);
   };
 
+  const sendData = async function (user) {
+    try {
+      await fetch(
+        'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/users.json',
+        {
+          method: 'POST',
+          body: JSON.stringify(user),
+          headers: {
+            'Content-Type': 'application/ json',
+          },
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const onSubmitHandler = function (e) {
     e.preventDefault();
     if (!formIsValid) {
       return;
     }
+
+    const user = {
+      name: `${enteredFName} ${enteredLName}`,
+      email: enteredEmail,
+    };
+
+    sendData(user);
 
     setFNameIsTouched(false);
     setLNameIsTouched(false);

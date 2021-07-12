@@ -23,5 +23,5 @@ export default App;
 //////////// 4º Make sure that under rules, you have read and write set to true.
 //////////// 5º Fetch the meals data from Firebase adding a GET request.
 //////////// 6º Add basic checkout form with name and address inputs once you click on the order button
-// 7º Validate user input before we submit it.
-// 8º Submit entered data to a backend with POST request
+//////////// 7º Validate user input before we submit it.
+//////////// 8º Submit entered data to Firebase with POST request
