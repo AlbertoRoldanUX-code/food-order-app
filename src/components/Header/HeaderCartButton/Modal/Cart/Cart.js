@@ -1,13 +1,15 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import cartContext from '../../../../../store/cart-context';
 import styles from './Cart.module.css';
 import CartItem from './CartItem/CartItem';
 
 function Cart(props) {
   const cartCtx = useContext(cartContext);
+  const [seeButtons, setSeeButtons] = useState(true);
 
   const onOrderHandler = function () {
     props.onOrder();
+    setSeeButtons(false);
   };
 
   const onRemoveHandler = function (id) {
@@ -39,17 +41,19 @@ function Cart(props) {
         <span>Total Amount</span>
         <span>${Math.abs(cartCtx.totalAmount).toFixed(2)}</span>
       </div>
-      <div className={styles.actions}>
-        <button className={styles['button--alt']} onClick={props.onHideModal}>
-          Close
-        </button>
-
-        {cartCtx.items.length > 0 && (
-          <button className={styles.button} onClick={onOrderHandler}>
-            Order
+      {seeButtons && (
+        <div className={styles.actions}>
+          <button className={styles['button--alt']} onClick={props.onHideModal}>
+            Close
           </button>
-        )}
-      </div>
+
+          {cartCtx.items.length > 0 && (
+            <button className={styles.button} onClick={onOrderHandler}>
+              Order
+            </button>
+          )}
+        </div>
+      )}
     </Fragment>
   );
 }
