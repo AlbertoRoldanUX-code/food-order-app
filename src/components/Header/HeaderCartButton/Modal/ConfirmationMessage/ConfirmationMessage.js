@@ -1,7 +1,7 @@
 // import styles from './ConfirmationMessage.module.css';
 
 function ConfirmationMessage() {
-  return <h1>Thank you, your order was submitted successfully.</h1>;
+  return <h2>Thank you! Your order was submitted successfully.</h2>;
 }
 
 export default ConfirmationMessage;

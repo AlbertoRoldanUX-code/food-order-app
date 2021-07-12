@@ -8,12 +8,14 @@ function CheckoutForm(props) {
   const [enteredStreet, setEnteredStreet] = useState('');
   const [enteredPostalCode, setEnteredPostalCode] = useState('');
   const [enteredNumber, setEnteredNumber] = useState('');
+  const [enteredCity, setEnteredCity] = useState('');
   const [fNameIsTouched, setFNameIsTouched] = useState(false);
   const [lNameIsTouched, setLNameIsTouched] = useState(false);
   const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [streetIsTouched, setStreetIsTouched] = useState(false);
   const [postalCodeIsTouched, setPostalCodeIsTouched] = useState(false);
   const [numberIsTouched, setNumberIsTouched] = useState(false);
+  const [cityIsTouched, setCityIsTouched] = useState(false);
 
   const validFName = enteredFName.trim() !== '';
   const invalidFNameInput = !validFName && fNameIsTouched;
@@ -27,6 +29,8 @@ function CheckoutForm(props) {
   const invalidPostalCodeInput = !validPostalCode && postalCodeIsTouched;
   const validNumber = enteredNumber.trim() !== '';
   const invalidNumberInput = !validNumber && numberIsTouched;
+  const validCity = enteredCity.trim() !== '';
+  const invalidCityInput = !validCity && cityIsTouched;
 
   const onChangeFNameHandler = function (e) {
     setEnteredFName(e.target.value);
@@ -46,6 +50,9 @@ function CheckoutForm(props) {
   const onChangeNumberHandler = function (e) {
     setEnteredNumber(e.target.value);
   };
+  const onChangeCityHandler = function (e) {
+    setEnteredCity(e.target.value);
+  };
 
   const onBlurFNameHandler = function () {
     setFNameIsTouched(true);
@@ -64,6 +71,9 @@ function CheckoutForm(props) {
   };
   const onBlurNumberHandler = function () {
     setNumberIsTouched(true);
+  };
+  const onBlurCityHandler = function () {
+    setCityIsTouched(true);
   };
 
   const sendData = async function (user) {
@@ -95,6 +105,7 @@ function CheckoutForm(props) {
       street: enteredStreet,
       postalCode: enteredPostalCode,
       number: enteredNumber,
+      city: enteredCity,
     };
 
     sendData(user);
@@ -105,12 +116,14 @@ function CheckoutForm(props) {
     setStreetIsTouched(false);
     setPostalCodeIsTouched(false);
     setNumberIsTouched(false);
+    setCityIsTouched(false);
     setEnteredFName('');
     setEnteredLName('');
     setEnteredEmail('');
     setEnteredStreet('');
     setEnteredPostalCode('');
     setEnteredNumber('');
+    setEnteredCity('');
   };
 
   let formIsValid = false;
@@ -120,7 +133,8 @@ function CheckoutForm(props) {
     validEmail &&
     validStreet &&
     validPostalCode &&
-    validNumber
+    validNumber &&
+    validCity
   ) {
     formIsValid = true;
   }
@@ -187,6 +201,25 @@ function CheckoutForm(props) {
         )}
       </div>
       <div className={styles['control-group']}>
+        <div
+          className={`
+          ${styles['form-control']}  ${
+            invalidCityInput ? styles['invalid'] : ''
+          }
+        `}
+        >
+          <label htmlFor='city'>City</label>
+          <input
+            type='text'
+            id='city'
+            onChange={onChangeCityHandler}
+            onBlur={onBlurCityHandler}
+            value={enteredCity}
+          />
+          {invalidCityInput && (
+            <p className={styles['error-text']}>Please enter a city</p>
+          )}
+        </div>
         <div
           className={`
           ${styles['form-control']}  ${
