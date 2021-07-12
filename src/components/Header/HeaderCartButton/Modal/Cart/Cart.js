@@ -7,7 +7,7 @@ function Cart(props) {
   const cartCtx = useContext(cartContext);
 
   const onOrderHandler = function () {
-    console.log('Ordering...');
+    props.onOrder();
   };
 
   const onRemoveHandler = function (id) {
