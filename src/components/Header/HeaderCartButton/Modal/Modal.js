@@ -35,7 +35,9 @@ function Modal(props) {
                 onConfirm={onConfirmHandler}
               />
             )}
-            {isConfirmed && <ConfirmationMessage />}
+            {isConfirmed && (
+              <ConfirmationMessage onHideModal={props.onHideModal} />
+            )}
           </span>
         </Card>,
 

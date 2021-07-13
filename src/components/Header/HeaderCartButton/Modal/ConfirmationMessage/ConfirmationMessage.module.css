@@ -2,3 +2,7 @@ h2 {
   font-family: 'Noto Sans JP', sans-serif;
   text-align: center;
 }
+
+.right {
+  text-align: right;
+}

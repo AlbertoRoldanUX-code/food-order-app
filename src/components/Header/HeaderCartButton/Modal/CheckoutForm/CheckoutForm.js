@@ -81,7 +81,7 @@ function CheckoutForm(props) {
 
   const sendData = async function (user) {
     try {
-      await fetch(
+      const res = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
         {
           method: 'POST',
@@ -91,6 +91,9 @@ function CheckoutForm(props) {
           },
         }
       );
+      if (res.ok) {
+        props.onConfirm();
+      }
     } catch (err) {
       console.error(err);
     }
@@ -111,8 +114,6 @@ function CheckoutForm(props) {
       city: enteredCity,
       order: cartCtx.items,
     };
-
-    props.onConfirm();
 
     sendData(user);
 
