@@ -81,6 +81,7 @@ function CheckoutForm(props) {
 
   const sendData = async function (order) {
     try {
+      props.onLoading();
       const res = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
         {
@@ -93,9 +94,11 @@ function CheckoutForm(props) {
       );
       if (res.ok) {
         props.onConfirm();
-        order.meal.map((meal) => cartCtx.removeItem(meal.id));
+        cartCtx.items.map((meal) => cartCtx.removeItem(meal.id));
       }
+
       if (!res.ok) throw new Error('Something went wrong');
+      props.onStopLoading(false);
     } catch (err) {
       console.error(err);
     }

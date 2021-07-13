@@ -5,11 +5,13 @@ import Cart from './Cart/Cart.js';
 import Card from '../../../Card/Card';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 import ConfirmationMessage from './ConfirmationMessage/ConfirmationMessage';
+import LoadingSpinner from '../../../AvailableMeals/LoadingSpinner';
 
 function Modal(props) {
   const [isOrdering, setIsOrdering] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isReviewing, setIsReviewing] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onOrderHandler = function () {
     setIsOrdering(true);
@@ -19,6 +21,15 @@ function Modal(props) {
     setIsConfirmed(true);
     setIsOrdering(false);
     setIsReviewing(false);
+  };
+
+  const onLoadingHandler = function () {
+    setIsOrdering(false);
+    setIsReviewing(false);
+    setIsLoading(true);
+  };
+  const onStopLoadingHandler = function () {
+    setIsLoading(false);
   };
 
   return (
@@ -33,11 +44,14 @@ function Modal(props) {
               <CheckoutForm
                 onHideModal={props.onHideModal}
                 onConfirm={onConfirmHandler}
+                onLoading={onLoadingHandler}
+                onStopLoading={onStopLoadingHandler}
               />
             )}
             {isConfirmed && (
               <ConfirmationMessage onHideModal={props.onHideModal} />
             )}
+            {isLoading && <LoadingSpinner />}
           </span>
         </Card>,
 
