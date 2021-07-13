@@ -43,12 +43,20 @@ function Cart(props) {
       </div>
       {seeButtons && (
         <div className={styles.actions}>
-          <button className={styles['button--alt']} onClick={props.onHideModal}>
+          <button
+            type='button'
+            className={styles['button--alt']}
+            onClick={props.onHideModal}
+          >
             Close
           </button>
 
           {cartCtx.items.length > 0 && (
-            <button className={styles.button} onClick={onOrderHandler}>
+            <button
+              type='button'
+              className={styles.button}
+              onClick={onOrderHandler}
+            >
               Order
             </button>
           )}

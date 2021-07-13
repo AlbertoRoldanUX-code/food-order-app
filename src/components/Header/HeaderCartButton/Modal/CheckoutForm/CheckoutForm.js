@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './CheckoutForm.module.css';
+import cartContext from '../../../../../store/cart-context';
 
 function CheckoutForm(props) {
+  const cartCtx = useContext(cartContext);
+
   const [enteredFName, setEnteredFName] = useState('');
   const [enteredLName, setEnteredLName] = useState('');
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -25,7 +28,7 @@ function CheckoutForm(props) {
   const invalidEmailInput = !validEmail && emailIsTouched;
   const validStreet = enteredStreet.trim() !== '';
   const invalidStreetInput = !validStreet && streetIsTouched;
-  const validPostalCode = enteredPostalCode.trim() !== '';
+  const validPostalCode = enteredPostalCode.trim().length === 5;
   const invalidPostalCodeInput = !validPostalCode && postalCodeIsTouched;
   const validNumber = enteredNumber.trim() !== '';
   const invalidNumberInput = !validNumber && numberIsTouched;
@@ -79,7 +82,7 @@ function CheckoutForm(props) {
   const sendData = async function (user) {
     try {
       await fetch(
-        'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/users.json',
+        'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
         {
           method: 'POST',
           body: JSON.stringify(user),
@@ -106,7 +109,10 @@ function CheckoutForm(props) {
       postalCode: enteredPostalCode,
       number: enteredNumber,
       city: enteredCity,
+      order: cartCtx.items,
     };
+
+    props.onConfirm();
 
     sendData(user);
 
@@ -275,18 +281,22 @@ function CheckoutForm(props) {
             value={enteredPostalCode}
           />
           {invalidPostalCodeInput && (
-            <p className={styles['error-text']}>Please enter a postal code</p>
+            <p className={styles['error-text']}>
+              Please enter a 5-digit postal code
+            </p>
           )}
         </div>
       </div>
 
       <div className={styles['form-actions']}>
-        <button className={styles.button2} onClick={props.onHideModal}>
+        <button
+          type='button'
+          className={styles.button2}
+          onClick={props.onHideModal}
+        >
           Cancel
         </button>
-        <button disabled={!formIsValid} onClick={props.onConfirm}>
-          Confirm
-        </button>
+        <button disabled={!formIsValid}>Confirm</button>
       </div>
     </form>
   );
