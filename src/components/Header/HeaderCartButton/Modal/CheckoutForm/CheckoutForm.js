@@ -94,7 +94,7 @@ function CheckoutForm(props) {
       );
       if (res.ok) {
         props.onConfirm();
-        cartCtx.items.map((meal) => cartCtx.removeItem(meal.id));
+        cartCtx.clearCart();
       }
 
       if (!res.ok) throw new Error('Something went wrong');
