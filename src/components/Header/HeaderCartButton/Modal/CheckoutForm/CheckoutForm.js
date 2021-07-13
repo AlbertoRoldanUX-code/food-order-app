@@ -98,9 +98,10 @@ function CheckoutForm(props) {
       }
 
       if (!res.ok) throw new Error('Something went wrong');
-      props.onStopLoading(false);
+      props.onStopLoading();
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
+      props.onError();
     }
   };
 

@@ -12,6 +12,7 @@ function Modal(props) {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isReviewing, setIsReviewing] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const onOrderHandler = function () {
     setIsOrdering(true);
@@ -32,6 +33,13 @@ function Modal(props) {
     setIsLoading(false);
   };
 
+  const onErrorHandler = function () {
+    setIsOrdering(false);
+    setIsReviewing(false);
+    setIsLoading(false);
+    setIsError(true);
+  };
+
   return (
     <Fragment>
       {ReactDOM.createPortal(
@@ -46,12 +54,18 @@ function Modal(props) {
                 onConfirm={onConfirmHandler}
                 onLoading={onLoadingHandler}
                 onStopLoading={onStopLoadingHandler}
+                onError={onErrorHandler}
               />
             )}
             {isConfirmed && (
               <ConfirmationMessage onHideModal={props.onHideModal} />
             )}
             {isLoading && <LoadingSpinner />}
+            {isError && (
+              <p className={styles['error-message']}>
+                Something went wrong, try again later.
+              </p>
+            )}
           </span>
         </Card>,
 
