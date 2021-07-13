@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './MealItemForm.module.css';
-import styles2 from './Input.module.css';
 
 function MealItemForm(props) {
   const [enteredAmount, setEnteredAmount] = useState('1');
@@ -17,7 +16,7 @@ function MealItemForm(props) {
 
   return (
     <form onSubmit={onSubmitHandler} className={styles.form}>
-      <div className={styles2.input}>
+      <div className={styles.input}>
         <label htmlFor={props.key}>Amount</label>
         <input
           value={enteredAmount}

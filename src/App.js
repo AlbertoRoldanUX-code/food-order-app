@@ -16,3 +16,6 @@ function App() {
 }
 
 export default App;
+
+// 1º Clear cart after confirming the order
+// 2º Show loading spinner when ordering.

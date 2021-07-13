@@ -79,13 +79,13 @@ function CheckoutForm(props) {
     setCityIsTouched(true);
   };
 
-  const sendData = async function (user) {
+  const sendData = async function (order) {
     try {
       const res = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
         {
           method: 'POST',
-          body: JSON.stringify(user),
+          body: JSON.stringify(order),
           headers: {
             'Content-Type': 'application/ json',
           },
@@ -93,7 +93,9 @@ function CheckoutForm(props) {
       );
       if (res.ok) {
         props.onConfirm();
+        order.meal.map((meal) => cartCtx.removeItem(meal.id));
       }
+      if (!res.ok) throw new Error('Something went wrong');
     } catch (err) {
       console.error(err);
     }
@@ -105,17 +107,17 @@ function CheckoutForm(props) {
       return;
     }
 
-    const user = {
+    const order = {
       name: `${enteredFName} ${enteredLName}`,
       email: enteredEmail,
       street: enteredStreet,
       postalCode: enteredPostalCode,
       number: enteredNumber,
       city: enteredCity,
-      order: cartCtx.items,
+      meal: cartCtx.items,
     };
 
-    sendData(user);
+    sendData(order);
 
     setFNameIsTouched(false);
     setLNameIsTouched(false);
