@@ -6,7 +6,7 @@ const CartItem = (props) => {
       <div>
         <h2>{props.name}</h2>
         <div className={styles.summary}>
-          <span className={styles.price}>${props.price}</span>
+          <span className={styles.price}>${props.price.toFixed(2)}</span>
           <span className={styles.amount}>x {props.amount}</span>
         </div>
       </div>

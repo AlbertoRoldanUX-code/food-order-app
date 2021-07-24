@@ -20,7 +20,7 @@ function MealItem(props) {
       <div>
         <h3>{props.name}</h3>
         <div className={styles.description}>{props.description}</div>
-        <div className={styles.price}>${props.price}</div>
+        <div className={styles.price}>${props.price.toFixed(2)}</div>
       </div>
       <MealItemForm onAddToCart={addToCartHandler} />
     </li>

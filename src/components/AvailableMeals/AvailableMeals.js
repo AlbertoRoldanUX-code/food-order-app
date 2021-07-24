@@ -15,9 +15,20 @@ function AvailableMeals() {
       const response = await fetch(
         'https://react-http-484b3-default-rtdb.europe-west1.firebasedatabase.app/meals.json'
       );
-      const data = await response.json();
       if (!response.ok) throw new Error('Something went wrong');
-      setMeals(data);
+      const responseData = await response.json();
+      // const loadedMeals = [];
+
+      // for (const key in responseData) {
+      //   loadedMeals.push({
+      //     id: key,
+      //     name: responseData[key].name,
+      //     description: responseData[key].description,
+      //     price: responseData[key].price,
+      //   });
+      // }
+
+      setMeals(responseData);
       setIsLoading(false);
     } catch (err) {
       console.error(err);
